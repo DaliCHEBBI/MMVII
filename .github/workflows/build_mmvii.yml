@@ -307,6 +307,8 @@ jobs:
     # Skipped on a docker-* branch: the Python API is not part of the image.
     if: github.ref_name == 'main'
     needs: [build_linux] #[build_linux, build_win]
+    permissions:
+      contents: write
     strategy:
       fail-fast: false
       matrix:
@@ -431,4 +433,3 @@ jobs:
           make_latest: false
           token: ${{ secrets.GITHUB_TOKEN }}
           files: apib11/dist/*.whl
-
